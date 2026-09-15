@@ -4,7 +4,7 @@
    then open index.html (or push to GitHub Pages) to see it live.
    ============================================================ */
 
-const SITE_CONFIG = {
+window.SITE_CONFIG = {
 
   // ---- The two of you ----
   you: "Your Name",
