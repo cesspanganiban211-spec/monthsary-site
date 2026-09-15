@@ -7,13 +7,13 @@
 window.SITE_CONFIG = {
 
   // ---- The two of you ----
-  you: "Your Name",
-  partner: "Partner's Name",
+  you: "Cess",
+  partner: "Chelsea",
 
   // Where each of you is based (shown in the LDR section)
-  yourCity: "Manila, Philippines",
+  yourCity: "Philippines",
   yourFlag: "🇵🇭",
-  partnerCity: "Kuala Lumpur, Malaysia",
+  partnerCity: " Malaysia",
   partnerFlag: "🇲🇾",
 
   // Distance shown in the LDR section (approximate is fine)
