@@ -1,0 +1,749 @@
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+  --paper: #f7f1e4;
+  --paper-deep: #efe6d2;
+  --ink: #2b2420;
+  --ink-soft: #5a4f45;
+  --airmail-red: #c0453c;
+  --airmail-blue: #2e5a88;
+  --night: #1b2a4a;
+  --night-deep: #101a30;
+  --gold: #c79a3b;
+  --blush: #e7a6a0;
+
+  --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --sans: "Jost", "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --hand: "Caveat", cursive;
+
+  --max-w: 720px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  margin: 0 0 0.4em;
+  line-height: 1.15;
+}
+
+a { color: inherit; }
+
+button {
+  font-family: var(--sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--airmail-blue);
+  outline-offset: 3px;
+}
+
+.section {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  position: relative;
+}
+
+.eyebrow-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+/* ============================================================
+   Airmail stripe divider — used between sections instead of a
+   plain <hr>. Echoes the diagonal red/blue border on real
+   airmail envelopes.
+   ============================================================ */
+.airmail-divider {
+  height: 10px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--airmail-red) 0 18px,
+    var(--paper) 18px 26px,
+    var(--airmail-blue) 26px 44px,
+    var(--paper) 44px 52px
+  );
+}
+
+/* ============================================================
+   Floating hearts (background ambience)
+   ============================================================ */
+#hearts-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -10%;
+  font-size: 1.4rem;
+  color: var(--blush);
+  opacity: 0.75;
+  animation: floatUp linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-115vh) translateX(var(--drift, 20px)) rotate(20deg); opacity: 0; }
+}
+
+/* ============================================================
+   Opening screen
+   ============================================================ */
+#opening-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--night);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05), transparent 45%);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.9s cubic-bezier(.6,0,.3,1), opacity 0.9s ease;
+}
+
+#opening-screen.opening-hide {
+  transform: translateY(-100%);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.opening-inner {
+  max-width: 480px;
+  padding: 2rem;
+  animation: openingFade 1.4s ease both;
+}
+
+@keyframes openingFade {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.opening-stamp {
+  font-size: 2.6rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  animation: stampFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes stampFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.opening-label {
+  font-family: var(--hand);
+  font-size: 1.4rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+#opening-screen h1 {
+  font-size: clamp(2rem, 8vw, 3rem);
+  margin-bottom: 0.3rem;
+}
+
+.opening-sub {
+  color: rgba(247,241,228,0.75);
+  margin-bottom: 2.2rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--airmail-red);
+  color: var(--paper);
+  padding: 0.9rem 2.1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px rgba(192,69,60,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(192,69,60,0.45);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--night);
+  border: 1.5px solid var(--night);
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--night);
+  color: var(--paper);
+}
+
+/* ============================================================
+   Hero / intro (after opening screen)
+   ============================================================ */
+#hero {
+  padding-top: 6rem;
+  text-align: center;
+}
+
+#hero .hero-kicker {
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  color: var(--airmail-red);
+}
+
+#hero h1 {
+  font-size: clamp(2.2rem, 7vw, 3.2rem);
+}
+
+#day-counter {
+  margin-top: 2rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 1.1rem 2rem;
+  border: 1px solid var(--ink);
+  border-radius: 14px;
+  background: var(--paper-deep);
+}
+
+#day-counter .count {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--airmail-blue);
+}
+
+#day-counter .count-label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-transform: none;
+}
+
+/* ============================================================
+   LDR section — map / distance
+   ============================================================ */
+#ldr {
+  background: var(--night);
+  color: var(--paper);
+  max-width: none;
+  padding: 5rem 1.5rem;
+}
+
+#ldr .section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+#ldr h2 { color: var(--paper); }
+
+.ldr-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.ldr-place {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.ldr-flag {
+  font-size: 2.6rem;
+  display: block;
+}
+
+.ldr-city {
+  font-size: 0.9rem;
+  color: rgba(247,241,228,0.8);
+  margin-top: 0.3rem;
+  max-width: 9ch;
+}
+
+.ldr-path {
+  flex: 1;
+  position: relative;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(247,241,228,0.5) 50%, transparent 50%);
+  background-size: 12px 2px;
+  margin: 0 0.5rem;
+}
+
+.ldr-path::after {
+  content: "✈";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  animation: planeDrift 4s ease-in-out infinite;
+}
+
+@keyframes planeDrift {
+  0%, 100% { transform: translate(-60%, -60%); }
+  50% { transform: translate(-40%, -60%); }
+}
+
+.ldr-distance {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: var(--hand);
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+
+.timezone-note {
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
+  color: rgba(247,241,228,0.75);
+  text-align: center;
+}
+
+/* ============================================================
+   Timeline
+   ============================================================ */
+.timeline {
+  margin-top: 2.5rem;
+  position: relative;
+  padding-left: 1.6rem;
+  border-left: 2px dotted var(--ink-soft);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2.4rem;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-icon {
+  position: absolute;
+  left: -2.35rem;
+  top: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--airmail-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.timeline-date {
+  font-family: var(--hand);
+  color: var(--airmail-blue);
+  font-size: 1.15rem;
+}
+
+.timeline-item h3 {
+  font-size: 1.3rem;
+  margin: 0.15rem 0 0.3rem;
+}
+
+.timeline-item p {
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ============================================================
+   Flip cards — "things I love about you"
+   ============================================================ */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.flip-card {
+  perspective: 1000px;
+  height: 170px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(.6,0,.3,1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flip-card-front {
+  background: var(--paper-deep);
+  border: 1.5px dashed var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+}
+
+.flip-card-front::after {
+  content: "tap";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.7rem;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+}
+
+.flip-card-back {
+  background: var(--airmail-blue);
+  color: var(--paper);
+  transform: rotateY(180deg);
+  font-size: 0.92rem;
+}
+
+/* ============================================================
+   Photo gallery — scrapbook / taped photos
+   ============================================================ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem 1.1rem;
+  margin-top: 2.5rem;
+}
+
+.gallery-item {
+  background: #fff;
+  padding: 0.5rem 0.5rem 1.4rem;
+  box-shadow: 0 6px 16px rgba(43,36,32,0.18);
+  transform: rotate(var(--tilt, -2deg));
+  transition: transform 0.25s ease;
+}
+
+.gallery-item:nth-child(even) { --tilt: 2deg; }
+.gallery-item:nth-child(3n) { --tilt: -1.5deg; }
+
+.gallery-item:hover { transform: rotate(0deg) scale(1.03); }
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  background: var(--paper-deep);
+}
+
+.gallery-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--paper-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.gallery-placeholder .cam { font-size: 1.6rem; }
+
+.gallery-caption {
+  font-family: var(--hand);
+  font-size: 1.05rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   Wishlist
+   ============================================================ */
+.wishlist {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.wishlist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  background: var(--paper-deep);
+  border-radius: 10px;
+  font-size: 0.98rem;
+}
+
+.wishlist li::before {
+  content: "✈";
+  color: var(--airmail-red);
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+}
+
+/* ============================================================
+   Envelope + letter
+   ============================================================ */
+#envelope-section {
+  text-align: center;
+}
+
+.envelope-wrap {
+  margin: 2.5rem auto 0;
+  width: min(340px, 90%);
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/2;
+  cursor: pointer;
+  background: var(--paper-deep);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  overflow: visible;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--paper-deep);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-bottom: none;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.7s cubic-bezier(.6,0,.3,1);
+  z-index: 3;
+}
+
+.envelope.is-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  font-size: 1.2rem;
+  z-index: 4;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.envelope.is-open .envelope-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+}
+
+.envelope-letter-peek {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 6%;
+  height: 40%;
+  background: #fffdf7;
+  border: 1px solid var(--paper-deep);
+  border-radius: 3px 3px 0 0;
+  z-index: 2;
+  transition: transform 0.7s cubic-bezier(.6,0,.3,1) 0.15s;
+}
+
+.envelope.is-open .envelope-letter-peek {
+  transform: translateY(-58%);
+}
+
+.envelope-hint {
+  margin-top: 1rem;
+  font-family: var(--hand);
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+}
+
+.letter-paper {
+  max-width: 560px;
+  margin: 2.5rem auto 0;
+  background: #fffdf7;
+  border: 1px solid var(--paper-deep);
+  box-shadow: 0 10px 30px rgba(43,36,32,0.15);
+  padding: 2.5rem 2rem;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--ink);
+  white-space: pre-wrap;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease, opacity 0.8s ease, padding 0.8s ease;
+}
+
+.letter-paper.is-visible {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.letter-paper .signature {
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  color: var(--airmail-red);
+}
+
+/* ============================================================
+   Final surprise
+   ============================================================ */
+#finale {
+  text-align: center;
+  padding-bottom: 7rem;
+}
+
+.finale-reveal {
+  margin-top: 2rem;
+  max-width: 480px;
+  margin-inline: auto;
+  padding: 1.8rem;
+  border-radius: 14px;
+  background: var(--night);
+  color: var(--paper);
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.34,1.56,.64,1);
+}
+
+.finale-reveal.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem 3rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   Confetti hearts (finale burst)
+   ============================================================ */
+#confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  overflow: hidden;
+}
+
+.confetti-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.3rem;
+  animation: confettiBurst 1.4s ease-out forwards;
+}
+
+@keyframes confettiBurst {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
+  100% {
+    transform:
+      translate(calc(-50% + var(--cx, 0px)), calc(-50% + var(--cy, 0px)))
+      scale(1);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 480px) {
+  .section { padding: 3.5rem 1.2rem; }
+  .flip-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .flip-card { height: 150px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 1rem 0.7rem; }
+  .ldr-city { max-width: 7ch; font-size: 0.8rem; }
+  .letter-paper { padding: 1.8rem 1.3rem; font-size: 1.05rem; }
+}
+
+@media (min-width: 640px) {
+  .flip-grid { grid-template-columns: repeat(3, 1fr); }
+}
