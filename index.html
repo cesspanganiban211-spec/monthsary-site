@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,179 +13,12 @@
 
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- Floating hearts ambience (populated by JS) -->
 <div id="hearts-layer" aria-hidden="true"></div>
-
-<!-- Confetti layer for the finale -->
 <div id="confetti-layer" aria-hidden="true"></div>
 
-<!-- ============================================================
-     Opening screen
-     ============================================================ -->
-<div id="opening-screen">
-  <div class="opening-inner">
-    <span class="opening-stamp">💌</span>
-    <span class="opening-label" id="opening-monthsary-label">2nd Monthsary</span>
-    <h1 id="opening-title">For You</h1>
-    <p class="opening-sub" id="opening-sub">A little something from across the distance.</p>
-    <button class="btn-primary" id="open-site-btn">Open it ↗</button>
-  </div>
-</div>
-
-<main id="main-content">
-
-  <!-- ============================================================
-       Hero
-       ============================================================ -->
-  <section id="hero" class="section">
-    <span class="hero-kicker" id="hero-kicker">happy</span>
-    <h1 id="hero-title">Our 2nd Monthsary</h1>
-    <p id="hero-sub">Two people, two countries, one very stubborn kind of love.</p>
-
-    <div id="day-counter">
-      <span class="count" id="day-count">0</span>
-      <span class="count-label">days of us, and counting</span>
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       LDR section
-       ============================================================ -->
-  <section id="ldr">
-    <div class="section-inner">
-      <span class="eyebrow-icon">🌏</span>
-      <h2>Two countries, one us</h2>
-      <p>Different cities, different time zones, same person I want to talk to first thing every morning.</p>
-
-      <div class="ldr-route">
-        <div class="ldr-place">
-          <span class="ldr-flag" id="ldr-flag-you">🇵🇭</span>
-          <span class="ldr-city" id="ldr-city-you">Manila</span>
-        </div>
-        <div class="ldr-path" aria-hidden="true"></div>
-        <div class="ldr-place">
-          <span class="ldr-flag" id="ldr-flag-partner">🇲🇾</span>
-          <span class="ldr-city" id="ldr-city-partner">Kuala Lumpur</span>
-        </div>
-      </div>
-
-      <p class="ldr-distance" id="ldr-distance">~2,400 km apart, 0 km apart in every way that matters</p>
-      <p class="timezone-note">Turns out "goodnight" in one timezone just means "good morning, I'm thinking of you" in the other.</p>
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Timeline
-       ============================================================ -->
-  <section id="timeline-section" class="section">
-    <span class="eyebrow-icon">📖</span>
-    <h2>How we got here</h2>
-    <p>A small map of two months.</p>
-
-    <div class="timeline" id="timeline-list">
-      <!-- populated by JS from config.timeline -->
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Flip cards
-       ============================================================ -->
-  <section id="love-section" class="section">
-    <span class="eyebrow-icon">💗</span>
-    <h2>Things I love about you</h2>
-    <p>Tap a card to flip it.</p>
-
-    <div class="flip-grid" id="flip-grid">
-      <!-- populated by JS from config.loveList -->
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Photo gallery
-       ============================================================ -->
-  <section id="gallery-section" class="section">
-    <span class="eyebrow-icon">📸</span>
-    <h2>Little pieces of us</h2>
-    <p>Screenshots, selfies, and everything in between.</p>
-
-    <div class="gallery-grid" id="gallery-grid">
-      <!-- populated by JS from config.photos -->
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       LDR wishlist
-       ============================================================ -->
-  <section id="wishlist-section" class="section">
-    <span class="eyebrow-icon">🥹</span>
-    <h2>Things I wish I could do with you</h2>
-    <p>Not "if," just "when."</p>
-
-    <ul class="wishlist" id="wishlist">
-      <!-- populated by JS from config.wishlist -->
-    </ul>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Envelope + letter
-       ============================================================ -->
-  <section id="envelope-section" class="section">
-    <span class="eyebrow-icon">✉️</span>
-    <h2>One more thing</h2>
-    <p>I wrote you something. Open it whenever you're ready.</p>
-
-    <div class="envelope-wrap">
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-label="Open the letter">
-        <div class="envelope-back"></div>
-        <div class="envelope-letter-peek"></div>
-        <div class="envelope-flap"></div>
-        <div class="envelope-seal">💌</div>
-      </div>
-      <p class="envelope-hint">tap the envelope to open</p>
-    </div>
-
-    <article class="letter-paper" id="letter-paper">
-      <!-- populated by JS from config.letter -->
-    </article>
-  </section><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You — Monthsary</title>
-<meta name="description" content="A little corner of the internet for us.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- Floating hearts ambience (populated by JS) -->
-<div id="hearts-layer" aria-hidden="true"></div>
-
-<!-- Confetti layer for the finale -->
-<div id="confetti-layer" aria-hidden="true"></div>
-
-<!-- ============================================================
-     Opening screen
-     ============================================================ -->
 <div id="opening-screen">
   <div class="opening-inner">
     <span class="opening-stamp">💌</span>
@@ -197,323 +31,152 @@
 
 <main id="main-content">
 
-  <!-- ============================================================
-       Hero
-       ============================================================ -->
   <section id="hero" class="section">
     <span class="hero-kicker" id="hero-kicker">happy</span>
     <h1 id="hero-title">Our 2nd Monthsary</h1>
     <p id="hero-sub">Two people, two countries, one very stubborn kind of love.</p>
 
-    <div id="day-counter">
-      <span class="count" id="day-count">0</span>
-      <span class="count-label">days of us, and counting</span>
-    </div>
+```
+<div id="day-counter">
+  <span class="count" id="day-count">0</span>
+  <span class="count-label">days of us, and counting</span>
+</div>
+```
+
   </section>
 
   <div class="airmail-divider" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       LDR section
-       ============================================================ -->
   <section id="ldr">
     <div class="section-inner">
       <span class="eyebrow-icon">🌏</span>
       <h2>Two countries, one us</h2>
       <p>Different cities, different time zones, same person I want to talk to first thing every morning.</p>
 
-      <div class="ldr-route">
-        <div class="ldr-place">
-          <span class="ldr-flag" id="ldr-flag-you">🇵🇭</span>
-          <span class="ldr-city" id="ldr-city-you">Manila</span>
-        </div>
-        <div class="ldr-path" aria-hidden="true"></div>
-        <div class="ldr-place">
-          <span class="ldr-flag" id="ldr-flag-partner">🇲🇾</span>
-          <span class="ldr-city" id="ldr-city-partner">Kuala Lumpur</span>
-        </div>
-      </div>
-
-      <p class="ldr-distance" id="ldr-distance">~2,400 km apart, 0 km apart in every way that matters</p>
-      <p class="timezone-note">Turns out "goodnight" in one timezone just means "good morning, I'm thinking of you" in the other.</p>
+```
+  <div class="ldr-route">
+    <div class="ldr-place">
+      <span class="ldr-flag" id="ldr-flag-you">🇵🇭</span>
+      <span class="ldr-city" id="ldr-city-you">Manila</span>
     </div>
+
+    <div class="ldr-path" aria-hidden="true"></div>
+
+    <div class="ldr-place">
+      <span class="ldr-flag" id="ldr-flag-partner">🇲🇾</span>
+      <span class="ldr-city" id="ldr-city-partner">Kuala Lumpur</span>
+    </div>
+  </div>
+
+  <p class="ldr-distance" id="ldr-distance">
+    ~2,400 km apart, 0 km apart in every way that matters
+  </p>
+
+  <p class="timezone-note">
+    Turns out "goodnight" in one timezone just means
+    "good morning, I'm thinking of you" in the other.
+  </p>
+</div>
+```
+
   </section>
 
   <div class="airmail-divider" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       Timeline
-       ============================================================ -->
   <section id="timeline-section" class="section">
     <span class="eyebrow-icon">📖</span>
     <h2>How we got here</h2>
     <p>A small map of two months.</p>
 
-    <div class="timeline" id="timeline-list">
-      <!-- populated by JS from config.timeline -->
-    </div>
+```
+<div class="timeline" id="timeline-list"></div>
+```
+
   </section>
 
   <div class="airmail-divider" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       Flip cards
-       ============================================================ -->
   <section id="love-section" class="section">
     <span class="eyebrow-icon">💗</span>
     <h2>Things I love about you</h2>
     <p>Tap a card to flip it.</p>
 
-    <div class="flip-grid" id="flip-grid">
-      <!-- populated by JS from config.loveList -->
-    </div>
+```
+<div class="flip-grid" id="flip-grid"></div>
+```
+
   </section>
 
   <div class="airmail-divider" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       Photo gallery
-       ============================================================ -->
   <section id="gallery-section" class="section">
     <span class="eyebrow-icon">📸</span>
     <h2>Little pieces of us</h2>
     <p>Screenshots, selfies, and everything in between.</p>
 
-    <div class="gallery-grid" id="gallery-grid">
-      <!-- populated by JS from config.photos -->
-    </div>
+```
+<div class="gallery-grid" id="gallery-grid"></div>
+```
+
   </section>
 
   <div class="airmail-divider" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       LDR wishlist
-       ============================================================ -->
   <section id="wishlist-section" class="section">
     <span class="eyebrow-icon">🥹</span>
     <h2>Things I wish I could do with you</h2>
     <p>Not "if," just "when."</p>
 
-    <ul class="wishlist" id="wishlist">
-      <!-- populated by JS from config.wishlist -->
-    </ul>
+```
+<ul class="wishlist" id="wishlist"></ul>
+```
+
   </section>
 
   <div class="airmail-divider" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       Envelope + letter
-       ============================================================ -->
   <section id="envelope-section" class="section">
     <span class="eyebrow-icon">✉️</span>
     <h2>One more thing</h2>
     <p>I wrote you something. Open it whenever you're ready.</p>
 
-    <div class="envelope-wrap">
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-label="Open the letter">
-        <div class="envelope-back"></div>
-        <div class="envelope-letter-peek"></div>
-        <div class="envelope-flap"></div>
-        <div class="envelope-seal">💌</div>
-      </div>
-      <p class="envelope-hint">tap the envelope to open</p>
-    </div>
-
-    <article class="letter-paper" id="letter-paper">
-      <!-- populated by JS from config.letter -->
-    </article>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Final surprise
-       ============================================================ -->
-  <section id="finale" class="section">
-    <span class="eyebrow-icon">👀</span>
-    <h2>One last button</h2>
-    <p>Go on, press it.</p>
-
-    <button class="btn-secondary" id="finale-btn">Press this 💕</button>
-
-    <div class="finale-reveal" id="finale-reveal"></div>
-  </section><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You — Monthsary</title>
-<meta name="description" content="A little corner of the internet for us.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- Floating hearts ambience (populated by JS) -->
-<div id="hearts-layer" aria-hidden="true"></div>
-
-<!-- Confetti layer for the finale -->
-<div id="confetti-layer" aria-hidden="true"></div>
-
-<!-- ============================================================
-     Opening screen
-     ============================================================ -->
-<div id="opening-screen">
-  <div class="opening-inner">
-    <span class="opening-stamp">💌</span>
-    <span class="opening-label" id="opening-monthsary-label">Monthsary</span>
-    <h1 id="opening-title">For You</h1>
-    <p class="opening-sub" id="opening-sub">A little something from across the distance.</p>
-    <button class="btn-primary" id="open-site-btn">Open it ↗</button>
+```
+<div class="envelope-wrap">
+  <div
+    class="envelope"
+    id="envelope"
+    role="button"
+    tabindex="0"
+    aria-expanded="false"
+    aria-label="Open the letter"
+  >
+    <div class="envelope-back"></div>
+    <div class="envelope-letter-peek"></div>
+    <div class="envelope-flap"></div>
+    <div class="envelope-seal">💌</div>
   </div>
+
+  <p class="envelope-hint">tap the envelope to open</p>
 </div>
 
-<main id="main-content">
+<article class="letter-paper" id="letter-paper"></article>
+```
 
-  <!-- ============================================================
-       Hero
-       ============================================================ -->
-  <section id="hero" class="section">
-    <span class="hero-kicker" id="hero-kicker">happy</span>
-    <h1 id="hero-title">Our 2nd Monthsary</h1>
-    <p id="hero-sub">Two people, two countries, one very stubborn kind of love.</p>
-
-    <div id="day-counter">
-      <span class="count" id="day-count">0</span>
-      <span class="count-label">days of us, and counting</span>
-    </div>
   </section>
 
   <div class="airmail-divider" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       LDR section
-       ============================================================ -->
-  <section id="ldr">
-    <div class="section-inner">
-      <span class="eyebrow-icon">🌏</span>
-      <h2>Two countries, one us</h2>
-      <p>Different cities, different time zones, same person I want to talk to first thing every morning.</p>
-
-      <div class="ldr-route">
-        <div class="ldr-place">
-          <span class="ldr-flag" id="ldr-flag-you">🇵🇭</span>
-          <span class="ldr-city" id="ldr-city-you">Manila</span>
-        </div>
-        <div class="ldr-path" aria-hidden="true"></div>
-        <div class="ldr-place">
-          <span class="ldr-flag" id="ldr-flag-partner">🇲🇾</span>
-          <span class="ldr-city" id="ldr-city-partner">Kuala Lumpur</span>
-        </div>
-      </div>
-
-      <p class="ldr-distance" id="ldr-distance">~2,400 km apart, 0 km apart in every way that matters</p>
-      <p class="timezone-note">Turns out "goodnight" in one timezone just means "good morning, I'm thinking of you" in the other.</p>
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Timeline
-       ============================================================ -->
-  <section id="timeline-section" class="section">
-    <span class="eyebrow-icon">📖</span>
-    <h2>How we got here</h2>
-    <p>A small map of two months.</p>
-
-    <div class="timeline" id="timeline-list">
-      <!-- populated by JS from config.timeline -->
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Flip cards
-       ============================================================ -->
-  <section id="love-section" class="section">
-    <span class="eyebrow-icon">💗</span>
-    <h2>Things I love about you</h2>
-    <p>Tap a card to flip it.</p>
-
-    <div class="flip-grid" id="flip-grid">
-      <!-- populated by JS from config.loveList -->
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Photo gallery
-       ============================================================ -->
-  <section id="gallery-section" class="section">
-    <span class="eyebrow-icon">📸</span>
-    <h2>Little pieces of us</h2>
-    <p>Screenshots, selfies, and everything in between.</p>
-
-    <div class="gallery-grid" id="gallery-grid">
-      <!-- populated by JS from config.photos -->
-    </div>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       LDR wishlist
-       ============================================================ -->
-  <section id="wishlist-section" class="section">
-    <span class="eyebrow-icon">🥹</span>
-    <h2>Things I wish I could do with you</h2>
-    <p>Not "if," just "when."</p>
-
-    <ul class="wishlist" id="wishlist">
-      <!-- populated by JS from config.wishlist -->
-    </ul>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Envelope + letter
-       ============================================================ -->
-  <section id="envelope-section" class="section">
-    <span class="eyebrow-icon">✉️</span>
-    <h2>One more thing</h2>
-    <p>I wrote you something. Open it whenever you're ready.</p>
-
-    <div class="envelope-wrap">
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-label="Open the letter">
-        <div class="envelope-back"></div>
-        <div class="envelope-letter-peek"></div>
-        <div class="envelope-flap"></div>
-        <div class="envelope-seal">💌</div>
-      </div>
-      <p class="envelope-hint">tap the envelope to open</p>
-    </div>
-
-    <article class="letter-paper" id="letter-paper">
-      <!-- populated by JS from config.letter -->
-    </article>
-  </section>
-
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Final surprise
-       ============================================================ -->
   <section id="finale" class="section">
     <span class="eyebrow-icon">👀</span>
     <h2>One last button</h2>
     <p>Go on, press it.</p>
 
-    <button class="btn-secondary" id="finale-btn">Press this 💕</button>
+```
+<button class="btn-secondary" id="finale-btn">Press this 💕</button>
 
-    <div class="finale-reveal" id="finale-reveal"></div>
+<div class="finale-reveal" id="finale-reveal"></div>
+```
+
   </section>
 
   <footer>
@@ -523,43 +186,8 @@
 </main>
 
 <script src="script.js"></script>
-<script src="config.js"></script>
-</body>
-</html>
-
-  <footer>
-    made with love, across the distance.
-  </footer>
-
-</main>
 
 <script src="config.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
 
-  <div class="airmail-divider" aria-hidden="true"></div>
-
-  <!-- ============================================================
-       Final surprise
-       ============================================================ -->
-  <section id="finale" class="section">
-    <span class="eyebrow-icon">👀</span>
-    <h2>One last button</h2>
-    <p>Go on, press it.</p>
-
-    <button class="btn-secondary" id="finale-btn">Press this 💕</button>
-
-    <div class="finale-reveal" id="finale-reveal"></div>
-  </section>
-
-  <footer>
-    made with love, across the distance.
-  </footer>
-
-</main>
-
-<script src="config.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
